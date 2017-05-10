@@ -10,9 +10,16 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    var tableView: VVTableView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        tableView = VVTableView(frame: view.bounds, style: .plain)
+        tableView?.contentInset = UIEdgeInsetsMake(20, 0, 0, 0)
+        tableView?.scrollIndicatorInsets = (tableView?.contentInset)!
+        view.addSubview(tableView!)
     }
 
     override func didReceiveMemoryWarning() {
