@@ -3,3 +3,4 @@
 //
 
 #import "NSString+Additions.h"
+#import "UIScreen+Additions.h"

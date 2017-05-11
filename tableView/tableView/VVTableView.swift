@@ -60,14 +60,16 @@ extension VVTableView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = self.dequeueReusableCell(withIdentifier: "cell")
+        var cell = self.dequeueReusableCell(withIdentifier: "cell") as? ItemTableViewCell
         if cell == nil {
-            cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
+            cell = ItemTableViewCell(style: .default, reuseIdentifier: "cell")
         }
         let item = datas[indexPath.row]
-        cell?.textLabel?.text = item.text
-        cell?.textLabel?.numberOfLines = 0;
-        cell?.textLabel?.font = UIFont.systemFont(ofSize: 15)
+        cell?.updata(item: item)
+        let height = cell?.getCellHeight() ?? 50
+
+        let range = Range(indexPath.row..<(indexPath.row+1))
+        cacheCellHeightArray.replaceSubrange(range, with: [height])
         return cell!
         
     }
@@ -78,13 +80,7 @@ extension VVTableView: UITableViewDelegate, UITableViewDataSource {
         if height > 0 {
             return height
         } else {
-            
-            let item = datas[indexPath.row]
-            let vm = VVItemViewModel(item: item)
-            let height = vm.calItemContentHeight(contentSize: CGSize(width: UIScreen.main.bounds.size.width - 32, height: 1000))
-            cacheCellHeightArray.replaceSubrange(Range(indexPath.row..<(indexPath.row + 1)), with: [height])
-            
-            return height
+            return 50
         }
     }
     
