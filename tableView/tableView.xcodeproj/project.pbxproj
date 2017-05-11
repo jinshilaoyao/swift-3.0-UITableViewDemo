@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EB1023A81EC3FAFA00F6E62B /* VVItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1023A71EC3FAFA00F6E62B /* VVItemViewModel.swift */; };
+		EB1023B71EC40BF000F6E62B /* NSString+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = EB1023B21EC40BF000F6E62B /* NSString+Additions.m */; };
+		EB1023B81EC40BF000F6E62B /* UIScreen+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = EB1023B41EC40BF000F6E62B /* UIScreen+Additions.m */; };
+		EB1023B91EC40BF000F6E62B /* UIView+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = EB1023B61EC40BF000F6E62B /* UIView+Additions.m */; };
+		EB1023BD1EC414DC00F6E62B /* TableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB1023BC1EC414DC00F6E62B /* TableViewModel.swift */; };
 		EB9EC7931EC2E004001CB8CD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9EC7921EC2E004001CB8CD /* AppDelegate.swift */; };
 		EB9EC7951EC2E004001CB8CD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9EC7941EC2E004001CB8CD /* ViewController.swift */; };
 		EB9EC7981EC2E004001CB8CD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB9EC7961EC2E004001CB8CD /* Main.storyboard */; };
@@ -38,6 +43,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EB1023A71EC3FAFA00F6E62B /* VVItemViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VVItemViewModel.swift; sourceTree = "<group>"; };
+		EB1023AB1EC40BA200F6E62B /* tableView-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "tableView-Bridging-Header.h"; sourceTree = "<group>"; };
+		EB1023B11EC40BF000F6E62B /* NSString+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Additions.h"; sourceTree = "<group>"; };
+		EB1023B21EC40BF000F6E62B /* NSString+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Additions.m"; sourceTree = "<group>"; };
+		EB1023B31EC40BF000F6E62B /* UIScreen+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScreen+Additions.h"; sourceTree = "<group>"; };
+		EB1023B41EC40BF000F6E62B /* UIScreen+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScreen+Additions.m"; sourceTree = "<group>"; };
+		EB1023B51EC40BF000F6E62B /* UIView+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Additions.h"; sourceTree = "<group>"; };
+		EB1023B61EC40BF000F6E62B /* UIView+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Additions.m"; sourceTree = "<group>"; };
+		EB1023BC1EC414DC00F6E62B /* TableViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewModel.swift; sourceTree = "<group>"; };
 		EB9EC78F1EC2E004001CB8CD /* tableView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tableView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB9EC7921EC2E004001CB8CD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EB9EC7941EC2E004001CB8CD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -82,6 +96,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EB1023B01EC40BC700F6E62B /* support */ = {
+			isa = PBXGroup;
+			children = (
+				EB1023B11EC40BF000F6E62B /* NSString+Additions.h */,
+				EB1023B21EC40BF000F6E62B /* NSString+Additions.m */,
+				EB1023B31EC40BF000F6E62B /* UIScreen+Additions.h */,
+				EB1023B41EC40BF000F6E62B /* UIScreen+Additions.m */,
+				EB1023B51EC40BF000F6E62B /* UIView+Additions.h */,
+				EB1023B61EC40BF000F6E62B /* UIView+Additions.m */,
+			);
+			path = support;
+			sourceTree = "<group>";
+		};
+		EB1023BA1EC414A400F6E62B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EB9EC7C41EC30410001CB8CD /* VVItem.swift */,
+				EB9EC7C61EC311EB001CB8CD /* VVUser.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		EB1023BB1EC414B000F6E62B /* VIewModel */ = {
+			isa = PBXGroup;
+			children = (
+				EB1023A71EC3FAFA00F6E62B /* VVItemViewModel.swift */,
+				EB1023BC1EC414DC00F6E62B /* TableViewModel.swift */,
+			);
+			name = VIewModel;
+			sourceTree = "<group>";
+		};
 		EB9EC7861EC2E004001CB8CD = {
 			isa = PBXGroup;
 			children = (
@@ -89,6 +134,7 @@
 				EB9EC7A61EC2E004001CB8CD /* tableViewTests */,
 				EB9EC7B11EC2E004001CB8CD /* tableViewUITests */,
 				EB9EC7901EC2E004001CB8CD /* Products */,
+				EB1023AB1EC40BA200F6E62B /* tableView-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -105,6 +151,9 @@
 		EB9EC7911EC2E004001CB8CD /* tableView */ = {
 			isa = PBXGroup;
 			children = (
+				EB1023BB1EC414B000F6E62B /* VIewModel */,
+				EB1023BA1EC414A400F6E62B /* Model */,
+				EB1023B01EC40BC700F6E62B /* support */,
 				EB9EC7921EC2E004001CB8CD /* AppDelegate.swift */,
 				EB9EC7941EC2E004001CB8CD /* ViewController.swift */,
 				EB9EC7C01EC2E14A001CB8CD /* VVTableView.swift */,
@@ -113,8 +162,6 @@
 				EB9EC79B1EC2E004001CB8CD /* LaunchScreen.storyboard */,
 				EB9EC79E1EC2E004001CB8CD /* Info.plist */,
 				EB9EC7C21EC2E399001CB8CD /* data.plist */,
-				EB9EC7C41EC30410001CB8CD /* VVItem.swift */,
-				EB9EC7C61EC311EB001CB8CD /* VVUser.swift */,
 			);
 			path = tableView;
 			sourceTree = "<group>";
@@ -206,6 +253,7 @@
 					EB9EC78E1EC2E004001CB8CD = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = 5P7GY8S5H9;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 					EB9EC7A21EC2E004001CB8CD = {
@@ -275,11 +323,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB1023B71EC40BF000F6E62B /* NSString+Additions.m in Sources */,
+				EB1023BD1EC414DC00F6E62B /* TableViewModel.swift in Sources */,
 				EB9EC7951EC2E004001CB8CD /* ViewController.swift in Sources */,
+				EB1023A81EC3FAFA00F6E62B /* VVItemViewModel.swift in Sources */,
+				EB1023B91EC40BF000F6E62B /* UIView+Additions.m in Sources */,
 				EB9EC7C71EC311EB001CB8CD /* VVUser.swift in Sources */,
 				EB9EC7931EC2E004001CB8CD /* AppDelegate.swift in Sources */,
 				EB9EC7C51EC30410001CB8CD /* VVItem.swift in Sources */,
 				EB9EC7C11EC2E14A001CB8CD /* VVTableView.swift in Sources */,
+				EB1023B81EC40BF000F6E62B /* UIScreen+Additions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,11 +484,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 5P7GY8S5H9;
 				INFOPLIST_FILE = tableView/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.faver.foundFather.tableView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "tableView-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -444,11 +500,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 5P7GY8S5H9;
 				INFOPLIST_FILE = tableView/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.faver.foundFather.tableView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "tableView-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

@@ -10,7 +10,8 @@ import UIKit
 
 class VVTableView: UITableView {
 
-    var datas = [Any]()
+    fileprivate var cacheCellHeightArray = [CGFloat]()
+    var datas = [VVItem]()
     var needLoadArr = [Any]()
     var scrollToToping: Bool = false
     
@@ -20,10 +21,11 @@ class VVTableView: UITableView {
         separatorStyle = .none
         dataSource = self
         delegate = self
-        datas = [Any]()
+        datas = [VVItem]()
         needLoadArr = [Any]()
         loadData()
         reloadData()
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -39,11 +41,13 @@ class VVTableView: UITableView {
         guard let array = NSArray(contentsOfFile: temp) as? [[String: AnyObject]] else {
             return
         }
+        
         for dict in array {
             let item = VVItem(dict: dict)
-            print("")
-            
+           datas.append(item)
         }
+        
+        cacheCellHeightArray = Array(repeating: -1, count: datas.count)
     }
     
 }
@@ -52,7 +56,7 @@ extension VVTableView: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return datas.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -60,13 +64,28 @@ extension VVTableView: UITableViewDelegate, UITableViewDataSource {
         if cell == nil {
             cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
         }
-        
+        let item = datas[indexPath.row]
+        cell?.textLabel?.text = item.text
+        cell?.textLabel?.numberOfLines = 0;
+        cell?.textLabel?.font = UIFont.systemFont(ofSize: 15)
         return cell!
         
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 44
+        let height = cacheCellHeightArray[indexPath.row]
+        
+        if height > 0 {
+            return height
+        } else {
+            
+            let item = datas[indexPath.row]
+            let vm = VVItemViewModel(item: item)
+            let height = vm.calItemContentHeight(contentSize: CGSize(width: UIScreen.main.bounds.size.width - 32, height: 1000))
+            cacheCellHeightArray.replaceSubrange(Range(indexPath.row..<(indexPath.row + 1)), with: [height])
+            
+            return height
+        }
     }
     
 }
