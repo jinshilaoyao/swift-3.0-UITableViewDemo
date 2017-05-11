@@ -82,5 +82,9 @@ class VVItem: NSObject{
     override func setValue(_ value: Any?, forUndefinedKey key: String) {
         
     }
+    override func value(forUndefinedKey key: String) -> Any? {
+        return "错误的\(key)"
+    }
+    
     
 }

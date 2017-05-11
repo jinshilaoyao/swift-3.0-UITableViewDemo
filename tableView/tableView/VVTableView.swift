@@ -41,7 +41,7 @@ class VVTableView: UITableView {
         }
         for dict in array {
             let item = VVItem(dict: dict)
-            print(item.user.allow_all_act_msg)
+            print("")
             
         }
     }

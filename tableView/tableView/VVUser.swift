@@ -19,10 +19,10 @@ class VVUser: NSObject {
     var block_word: String = ""
     var city: String = ""
     
-    //var class: String = ""
+    var userClass: String = ""
     var created_at: String = ""
     var credit_score: String = ""
-    //var description: String = ""
+    var UserDescription: String = ""
     var domain: String = ""
     var favourites_count: String = ""
     var follow_me: String = ""
@@ -77,12 +77,24 @@ class VVUser: NSObject {
     
     
     override func setValue(_ value: Any?, forKey key: String) {
-                super.setValue(value, forKey: key)
+        super.setValue(value, forKey: key)
     }
     
     
     override func setValue(_ value: Any?, forUndefinedKey key: String) {
+
         
+        if (key == "class") {
+            userClass = value as! String
+        }
+        
+        if (key == "description") {
+            UserDescription = value as! String
+        }
+    }
+    
+    override func value(forUndefinedKey key: String) -> Any? {
+        return "错误的\(key)"
     }
 
 }
