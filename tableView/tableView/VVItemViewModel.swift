@@ -20,7 +20,7 @@ class VVItemViewModel: NSObject {
     func calItemContentHeight(contentSize size: CGSize) -> CGFloat {
         let frame = item.text as NSString
         let font = UIFont.systemFont(ofSize: 15)
-        let value = frame.sizeWithConstrained(to: size, from: font, lineSpace: 5)
+        let value = frame.sizeWithConstrained(to: size, from: font, lineSpace: 3.5)
         return value.height
     }
     
