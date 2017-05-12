@@ -33,6 +33,7 @@ class ItemTableViewCell: UITableViewCell {
         iconImage = UIImageView(frame: CGRect(x: 8, y: 8, width: 50, height: 50))
         iconImage?.image = UIImage(named: "1")
         self.contentView.addSubview(iconImage!)
+        iconImage?.isOpaque = true
         
         contentLabel = UILabel(frame: CGRect(x: 8 + 50 + 8, y: 8, width: Int(UIScreen.screenWidth() - 50 - 3 * 8), height: 50))
         contentLabel?.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
@@ -48,37 +49,37 @@ class ItemTableViewCell: UITableViewCell {
     }
     
     func updata(item: VVItem) {
-        //contentLabel?.text = item.text
+        self.item = item
         viewModel = VVItemViewModel(item: item)
+        guard let vm = viewModel else {
+            return
+        }
+        
+        let height = vm.calItemContentHeight(contentSize: CGSize(width: Int(UIScreen.screenWidth() - 50 - 3*8), height: 1000))
+        contentHeight = height
+        
+        changeContentLabelHeight()
+
     }
     
     func getCellHeight() ->CGFloat {
         
-        guard let vm = viewModel else {
-            return 0
-        }
-        
-        var height = vm.calItemContentHeight(contentSize: CGSize(width: Int(UIScreen.screenWidth() - 50 - 3*8), height: 1000))
-        height = height > 50 ? height : 50
-        contentHeight = height
+        let height = contentHeight > 50 ? contentHeight : 50
         
         return height + 2 * 8
     }
     
-    override func layoutSubviews() {
-         super.layoutSubviews()
-        
-        
+
+    func changeContentLabelHeight() {
         var temp = contentLabel?.frame
         temp!.size.height = contentHeight
         contentLabel?.frame = temp!
     }
-    
+
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         
-        
-        
+        contentLabel?.text = item?.text
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

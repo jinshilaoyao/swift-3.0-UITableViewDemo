@@ -84,4 +84,23 @@ extension VVTableView: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        
+        guard let ip = indexPathForRow(at: CGPoint(x: 0, y: targetContentOffset.pointee.y)), let cip = indexPathsForVisibleRows?.first else {
+            return
+        }
+        let skipCount = 8
+        
+        if (labs(cip.row - ip.row) > skipCount) {
+            
+            let temp = indexPathsForRows(in: CGRect(x: 0, y: targetContentOffset.pointee.y, width: frame.size.width, height: frame.size.width))
+            let arr = Array(arrayLiteral: temp)
+            
+            if (velocity.y<0) {
+            
+            } else {
+                
+            }
+        }
+    }
 }
