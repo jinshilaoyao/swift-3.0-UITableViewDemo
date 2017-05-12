@@ -54,17 +54,15 @@ class ItemTableViewCell: UITableViewCell {
     
     func updata(item: VVItem) {
         self.item = item
-        viewModel = VVItemViewModel(item: item)
-        contentLabel?.text = item.text
-        guard let vm = viewModel else {
-            return
-        }
         
-        //let height = item.text.stringHeightWith(fontSize: <#T##CGFloat#>, width: <#T##CGFloat#>, lineSpace: <#T##CGFloat#>)
-        let height = vm.calItemContentHeight(contentSize: CGSize(width: Int(UIScreen.screenWidth() - 50 - 3*8), height: 1000))
-        contentHeight = height
-        
-        changeContentLabelHeight()
+        perpareItemData()
+    }
+    
+    
+    
+    func clear() {
+        iconImage?.image = UIImage(named: "2")
+        contentLabel?.text = ""
     }
     
     func calculateRowHeight(contentText text: String, textFont font: Int) ->CGFloat {
@@ -75,14 +73,6 @@ class ItemTableViewCell: UITableViewCell {
         
         return rect.height
     }
-    /*
-    - (CGFloat)calculateRowHeight:(NSString *)string fontSize:(NSInteger)fontSize{
-    NSDictionary *dic = @{NSFontAttributeName:[UIFont systemFontOfSize:fontSize]};//指定字号
-    CGRect rect = [string boundingRectWithSize:CGSizeMake(self.view.width - 30, 0)/*计算高度要先指定宽度*/ options:NSStringDrawingUsesLineFragmentOrigin |
-    NSStringDrawingUsesFontLeading attributes:dic context:nil];
-    return rect.size.height;
-    }
-     */
     
     func getCellHeight() ->CGFloat {
         
@@ -100,7 +90,29 @@ class ItemTableViewCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+
+        perpareConstraint()
+    }
+    
+    func perpareItemData() {
         
+        guard let item = self.item else {
+            return
+        }
+        
+        viewModel = VVItemViewModel(item: item)
+        contentLabel?.text = item.text
+        guard let vm = viewModel else {
+            return
+        }
+        
+        let height = vm.calItemContentHeight(contentSize: CGSize(width: Int(UIScreen.screenWidth() - 50 - 3*8), height: 1000))
+        contentHeight = height
+        
+        changeContentLabelHeight()
+    }
+    
+    func perpareConstraint() {
         guard let iconImage = self.iconImage, let label = contentLabel else {
             return
         }
@@ -115,7 +127,7 @@ class ItemTableViewCell: UITableViewCell {
             ])
         
         
-        let labelWidth: CGFloat = CGFloat(UIScreen.screenWidth()) - (iconImage.image?.size.height)! - 3*8
+        let labelWidth: CGFloat = CGFloat(UIScreen.screenWidth()) - (iconImage.image?.size.height)! - 3*margin
         NSLayoutConstraint.activate([
             label.topAnchor.constraint(equalTo: self.topAnchor, constant: 8),
             label.leftAnchor.constraint(equalTo: iconImage.rightAnchor, constant: 8),
