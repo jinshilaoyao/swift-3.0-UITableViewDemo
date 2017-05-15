@@ -40,7 +40,7 @@ class ItemTableViewCell: UITableViewCell {
         contentLabel = UILabel()
         contentLabel?.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         contentLabel?.numberOfLines = 0
-        
+        contentLabel?.backgroundColor = UIColor.lightGray
         contentLabel?.translatesAutoresizingMaskIntoConstraints = false
         contentLabel?.font = UIFont.systemFont(ofSize: 15)
         self.contentView.addSubview(contentLabel!)
@@ -150,8 +150,6 @@ extension String{
     func stringHeightWith(fontSize:CGFloat,width:CGFloat,lineSpace : CGFloat)->CGFloat{
         
         let font = UIFont.systemFont(ofSize: fontSize)
-        
-        //        let size = CGSizeMake(width,CGFloat.max)
         
         let size = CGSize(width: width, height: CGFloat(MAXFLOAT))
         

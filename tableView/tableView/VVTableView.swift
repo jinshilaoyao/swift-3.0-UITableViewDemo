@@ -14,6 +14,7 @@ class VVTableView: UITableView {
     var datas = [VVItem]()
     var needLoadArr = [IndexPath]()
     var scrollToToping: Bool = false
+    var isStartScroll: Bool = false
     
     override init(frame: CGRect, style: UITableViewStyle) {
         super.init(frame: frame, style: style)
@@ -54,7 +55,6 @@ class VVTableView: UITableView {
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
         
         needLoadArr.removeAll()
-        loadContent()
         return super.hitTest(point, with: event)
     }
     
@@ -122,17 +122,14 @@ extension VVTableView: UITableViewDelegate, UITableViewDataSource {
         if height > 0 {
             return height
         } else {
-            return 50
+            return 80
         }
     }
     
     
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        
-        
-        self.reloadRows(at: self.indexPathsForVisibleRows!, with: .automatic)
-        
+        self.reloadRows(at: self.indexPathsForVisibleRows!, with: .none)
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
@@ -140,7 +137,7 @@ extension VVTableView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        
+        isStartScroll = false
         guard let ip = indexPathForRow(at: CGPoint(x: 0, y: targetContentOffset.pointee.y)), let cip = indexPathsForVisibleRows?.first else {
             return
         }
